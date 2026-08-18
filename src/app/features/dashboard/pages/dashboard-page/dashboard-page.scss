@@ -1,0 +1,105 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4);
+}
+
+.dashboard__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+// Insignia hexagonal de nivel: el elemento "firma" del diseño
+.level-badge {
+  width: 72px;
+  height: 80px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--color-surface-alt), var(--color-surface));
+  border: 1px solid var(--color-xp);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.level-badge__value {
+  font-family: var(--font-mono);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-xp);
+}
+
+.dashboard__identity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.dashboard__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.streak-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  width: fit-content;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-streak);
+}
+
+// --- Barra de XP ---
+.xp-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.xp-bar__labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.xp-bar__track {
+  position: relative;
+  height: 14px;
+  border-radius: var(--radius-sm);
+  background: var(--color-xp-soft);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+
+  // Muescas cada 10%, el detalle "de juego" de la barra
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(10% - 1px),
+      rgba(0, 0, 0, 0.35) calc(10% - 1px),
+      rgba(0, 0, 0, 0.35) 10%
+    );
+    pointer-events: none;
+  }
+}
+
+.xp-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-xp), #fcd98a);
+  transition: width 0.4s ease;
+}
