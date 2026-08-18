@@ -1,1 +1,10 @@
-<p>dashboard-page works!</p>
+<h1>Dashboard</h1>
+
+@let xpState = habitsStore.xpState();
+
+<section>
+  <p>Nivel {{ xpState.level }}</p>
+  <p>{{ xpState.currentXp }} / {{ xpState.xpForNextLevel }} XP</p>
+  <p>Progreso: {{ habitsStore.progressCurrentLevel() }}%</p>
+  <p>Racha global: {{ habitsStore.streakGlobal() }} días</p>
+</section>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { HabitsStore } from '@core/services/habits-store';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './dashboard-page.html',
   styleUrl: './dashboard-page.scss',
 })
-export class DashboardPage {}
+export class DashboardPage {
+  protected readonly habitsStore = inject(HabitsStore);
+}

@@ -1,1 +1,14 @@
-<p>habits-page works!</p>
+<h1>Mis hábitos</h1>
+
+<ul>
+  @for (habit of habitsStore.habits(); track habit.id) {
+    <li>
+      {{ habit.name }} — {{ habit.xpReward }} XP
+      @if (habit.completedToday) {
+        <span>✅ Hecho hoy</span>
+      } @else {
+        <span>⬜ Pendiente</span>
+      }
+    </li>
+  }
+</ul>

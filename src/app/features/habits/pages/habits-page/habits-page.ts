@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { HabitsStore } from '@core/services/habits-store';
 
 @Component({
   selector: 'app-habits-page',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './habits-page.html',
   styleUrl: './habits-page.scss',
 })
-export class HabitsPage {}
+export class HabitsPage {
+  protected readonly habitsStore = inject(HabitsStore);
+}
