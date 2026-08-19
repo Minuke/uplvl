@@ -17,7 +17,8 @@
       <span>{{ xpState.xpForNextLevel }} XP</span>
     </div>
     <div class="xp-bar__track">
-      <div class="xp-bar__fill" [style.width.%]="habitsStore.progressCurrentLevel()"></div>
+      <div class="xp-bar__fill" [class.xp-bar__fill--no-transition]="skipTransition()"
+        [style.width.%]="displayedProgress()"></div>
     </div>
   </div>
 

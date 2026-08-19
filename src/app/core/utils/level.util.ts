@@ -39,3 +39,18 @@ export function calculateLevelStatus(xpTotal: number): XpState {
 
   return xpState;
 }
+
+/**
+ * Calcula el porcentaje (0-100) de progreso DENTRO del nivel actual.
+ * No mide el XP total acumulado, sino solo el tramo que va desde el
+ * inicio de este nivel hasta el inicio del siguiente.
+ */
+export function calculateLevelProgressPercentage(xpState: XpState): number {
+  const levelStartXp = xpState.level <= 1 ? 0 : xpRequiredForLevel(xpState.level);
+  const xpIntoLevel = xpState.currentXp - levelStartXp;
+  const levelSpan = xpState.xpForNextLevel - levelStartXp;
+
+  const percentage = Math.round((xpIntoLevel / levelSpan) * 100);
+
+  return percentage;
+}

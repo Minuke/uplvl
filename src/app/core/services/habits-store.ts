@@ -1,6 +1,6 @@
 import { computed, Service, signal } from '@angular/core';
 import { Habit } from '@core/models/habit.model';
-import { calculateLevelStatus } from '@core/utils/level.util';
+import { calculateLevelProgressPercentage, calculateLevelStatus } from '@core/utils/level.util';
 
 @Service()
 export class HabitsStore {
@@ -47,11 +47,9 @@ export class HabitsStore {
 
   readonly habitsToday = computed(() => this._habits());
 
-  readonly progressCurrentLevel = computed(() => {
-    const state = this.xpState();
-    // % de progreso dentro del nivel actual, para pintar una barra de 0 a 100
-    return Math.round((state.currentXp / state.xpForNextLevel) * 100);
-  });
+  readonly progressCurrentLevel = computed(() =>
+    calculateLevelProgressPercentage(this.xpState())
+  );
 
   /**
  * Alterna el estado "completado hoy" de un hábito.
@@ -86,4 +84,6 @@ export class HabitsStore {
     this._habits.set(updatedHabits);
     this._xpTotal.update((total) => Math.max(0, total + xpDelta));
   }
+
+  
 }
