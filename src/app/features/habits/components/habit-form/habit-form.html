@@ -31,14 +31,8 @@
   </div>
 
   <div class="habit-form__actions">
-    <button type="button" class="habit-form__button habit-form__button--ghost" (click)="onCancel()">
-      Cancelar
-    </button>
-    <button
-      type="submit"
-      class="habit-form__button habit-form__button--primary"
-      [disabled]="habitForm().invalid()"
-    >
+    <button type="button" class="btn btn--ghost" (click)="onCancel()">Cancelar</button>
+    <button type="submit" class="btn btn--primary" [disabled]="habitForm().invalid()">
       {{ habitToEdit() ? 'Guardar cambios' : 'Crear hábito' }}
     </button>
   </div>

@@ -1,9 +1,7 @@
 <section class="habits-page">
   <header class="habits-page__header">
     <h1 class="habits-page__title">Mis hábitos</h1>
-    <button type="button" class="habit-form__button habit-form__button--primary" (click)="openCreateForm()">
-      + Nuevo hábito
-    </button>
+      <button type="button" class="btn btn--primary" (click)="openCreateForm()">+ Nuevo hábito</button>
   </header>
 
   @if (habitsStore.habits().length === 0) {
