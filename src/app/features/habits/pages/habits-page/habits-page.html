@@ -1,9 +1,44 @@
 <section class="habits-page">
-  <h1 class="habits-page__title">Mis hábitos</h1>
+  <header class="habits-page__header">
+    <h1 class="habits-page__title">Mis hábitos</h1>
+    <button type="button" class="habit-form__button habit-form__button--primary" (click)="openCreateForm()">
+      + Nuevo hábito
+    </button>
+  </header>
 
-  <ul class="quest-list">
-    @for (habit of habitsStore.habits(); track habit.id) {
-      <app-habit-card [habit]="habit" (toggle)="habitsStore.toggleHabit($event)" />
-    }
-  </ul>
+  @if (habitsStore.habits().length === 0) {
+    <p class="habits-page__empty">Aún no tienes hábitos. Crea el primero para empezar a ganar XP.</p>
+  } @else {
+    <ul class="quest-list">
+      @for (habit of habitsStore.habits(); track habit.id) {
+        <app-habit-card
+          [habit]="habit"
+          [showActions]="true"
+          (toggle)="habitsStore.toggleHabit($event)"
+          (edit)="openEditForm($event)"
+          (remove)="requestDeletion($event)"
+        />
+      }
+    </ul>
+  }
+
+  @if (isFormOpen()) {
+    <div class="habits-page__modal-backdrop" (click)="closeForm()">
+      <div class="habits-page__modal-panel" (click)="$event.stopPropagation()">
+        <app-habit-form
+          [habitToEdit]="habitBeingEdited()"
+          (save)="onFormSave($event)"
+          (cancel)="closeForm()"
+        />
+      </div>
+    </div>
+  }
+
+  @if (habitPendingDeletion(); as habit) {
+    <app-confirm-dialog
+      [message]="'¿Seguro que quieres eliminar &quot;' + habit.name + '&quot;? Esta acción no se puede deshacer.'"
+      (confirm)="confirmDeletion()"
+      (cancel)="cancelDeletion()"
+    />
+  }
 </section>
