@@ -1,4 +1,5 @@
 import { computed, Service, signal } from '@angular/core';
+import { HabitFormValue } from '@core/models/habit-form-value.model';
 import { Habit } from '@core/models/habit.model';
 import { calculateLevelProgressPercentage, calculateLevelStatus } from '@core/utils/level.util';
 
@@ -85,5 +86,55 @@ export class HabitsStore {
     this._xpTotal.update((total) => Math.max(0, total + xpDelta));
   }
 
-  
+  /**
+  * Crea un hábito nuevo a partir de los datos del formulario.
+  * El id lo genera el store (el usuario nunca lo escribe), y arranca
+  * siempre sin completar y sin racha.
+  */
+  addHabit(formValue: HabitFormValue): void {
+    const newHabit: Habit = {
+      id: crypto.randomUUID(),
+      name: formValue.name,
+      xpReward: formValue.xpReward,
+      category: formValue.category,
+      completedToday: false,
+      currentStreak: 0,
+    };
+
+    const updatedHabits = [...this._habits(), newHabit];
+    this._habits.set(updatedHabits);
+  }
+
+  /**
+   * Actualiza los datos editables de un hábito existente (nombre, xpReward,
+   * categoría), preservando su id, su estado de completado y su racha actual.
+   */
+  updateHabit(habitId: string, formValue: HabitFormValue): void {
+    const updatedHabits = this._habits().map((habit) => {
+      if (habit.id !== habitId) {
+        return habit;
+      }
+
+      const updatedHabit: Habit = {
+        ...habit,
+        name: formValue.name,
+        xpReward: formValue.xpReward,
+        category: formValue.category,
+      };
+
+      return updatedHabit;
+    });
+
+    this._habits.set(updatedHabits);
+  }
+
+  /**
+   * Elimina un hábito de la lista de forma permanente.
+   */
+  removeHabit(habitId: string): void {
+    const updatedHabits = this._habits().filter((habit) => habit.id !== habitId);
+    this._habits.set(updatedHabits);
+  }
+
+
 }
