@@ -1,36 +1,36 @@
-<form (submit)="onSubmit(); $event.preventDefault()" class="habit-form">
-  <div class="habit-form__field">
-    <label class="habit-form__label" for="name">Nombre del hábito</label>
+<form (submit)="onSubmit(); $event.preventDefault()" class="form-stack">
+  <div class="form-field">
+    <label class="form-label" for="name">Nombre del hábito</label>
     <input
       id="name"
       type="text"
-      class="habit-form__input"
+      class="form-input"
       [formField]="habitForm.name"
       placeholder="Ej. Beber 2L de agua"
     />
     @if (habitForm.name().touched() && habitForm.name().errors().length) {
-      <span class="habit-form__error">{{ habitForm.name().errors()[0].message }}</span>
+      <span class="form-error">{{ habitForm.name().errors()[0].message }}</span>
     }
   </div>
 
-  <div class="habit-form__field">
-    <label class="habit-form__label" for="xpReward">Recompensa en XP</label>
-    <input id="xpReward" type="number" class="habit-form__input" [formField]="habitForm.xpReward" />
+  <div class="form-field">
+    <label class="form-label" for="xpReward">Recompensa en XP</label>
+    <input id="xpReward" type="number" class="form-input" [formField]="habitForm.xpReward" />
     @if (habitForm.xpReward().touched() && habitForm.xpReward().errors().length) {
-      <span class="habit-form__error">{{ habitForm.xpReward().errors()[0].message }}</span>
+      <span class="form-error">{{ habitForm.xpReward().errors()[0].message }}</span>
     }
   </div>
 
-  <div class="habit-form__field">
-    <label class="habit-form__label" for="category">Categoría</label>
-    <select id="category" class="habit-form__input" [formField]="habitForm.category">
+  <div class="form-field">
+    <label class="form-label" for="category">Categoría</label>
+    <select id="category" class="form-input" [formField]="habitForm.category">
       @for (category of categories; track category) {
         <option [value]="category">{{ category }}</option>
       }
     </select>
   </div>
 
-  <div class="habit-form__actions">
+  <div class="form-actions">
     <button type="button" class="btn btn--ghost" (click)="onCancel()">Cancelar</button>
     <button type="submit" class="btn btn--primary" [disabled]="habitForm().invalid()">
       {{ habitToEdit() ? 'Guardar cambios' : 'Crear hábito' }}
