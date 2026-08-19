@@ -3,23 +3,7 @@
 
   <ul class="quest-list">
     @for (habit of habitsStore.habits(); track habit.id) {
-      <li class="quest-card" [class.quest-card--done]="habit.completedToday">
-        <span [class]="'quest-card__category-dot quest-card__category-dot--' + habit.category"></span>
-
-        <div class="quest-card__body">
-          <span class="quest-card__name">{{ habit.name }}</span>
-          <span class="quest-card__meta">
-            <span class="quest-card__xp">+{{ habit.xpReward }} XP</span>
-            <span>🔥 {{ habit.currentStreak }}</span>
-          </span>
-        </div>
-
-        @if (habit.completedToday) {
-          <span class="quest-card__status quest-card__status--done">✅ Hecho</span>
-        } @else {
-          <span class="quest-card__status quest-card__status--pending">⬜ Pendiente</span>
-        }
-      </li>
+      <app-habit-card [habit]="habit" (toggle)="habitsStore.toggleHabit($event)" />
     }
   </ul>
 </section>

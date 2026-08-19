@@ -2,7 +2,7 @@
 
 <section class="dashboard">
   <header class="dashboard__header">
-    <div class="level-badge">
+    <div class="level-badge" [class.level-badge--level-up]="justLeveledUp()">
       <span class="level-badge__value">{{ xpState.level }}</span>
     </div>
     <div class="dashboard__identity">
@@ -19,5 +19,14 @@
     <div class="xp-bar__track">
       <div class="xp-bar__fill" [style.width.%]="habitsStore.progressCurrentLevel()"></div>
     </div>
+  </div>
+
+  <div class="dashboard__today">
+    <h2 class="dashboard__section-title">Hábitos de hoy</h2>
+    <ul class="quest-list">
+      @for (habit of habitsStore.habitsToday(); track habit.id) {
+        <app-habit-card [habit]="habit" (toggle)="habitsStore.toggleHabit($event)" />
+      }
+    </ul>
   </div>
 </section>
