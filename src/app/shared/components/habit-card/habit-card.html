@@ -1,0 +1,23 @@
+@let h = habit();
+
+<li class="quest-card" [class.quest-card--done]="h.completedToday">
+  <label class="quest-card__checkbox">
+    <input type="checkbox" [checked]="h.completedToday" (change)="onToggle()" />
+  </label>
+
+  <span [class]="'quest-card__category-dot quest-card__category-dot--' + h.category"></span>
+
+  <div class="quest-card__body">
+    <span class="quest-card__name">{{ h.name }}</span>
+    <span class="quest-card__meta">
+      <span class="quest-card__xp">+{{ h.xpReward }} XP</span>
+      <span>🔥 {{ h.currentStreak }}</span>
+    </span>
+  </div>
+
+  @if (h.completedToday) {
+    <span class="quest-card__status quest-card__status--done">✅ Hecho</span>
+  } @else {
+    <span class="quest-card__status quest-card__status--pending">⬜ Pendiente</span>
+  }
+</li>

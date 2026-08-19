@@ -1,0 +1,66 @@
+.quest-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  list-style: none;
+}
+
+.quest-card--done {
+  opacity: 0.55;
+}
+
+.quest-card__checkbox input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-xp);
+  cursor: pointer;
+}
+
+.quest-card__category-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+
+  &--salud { background: var(--color-cat-salud); }
+  &--estudio { background: var(--color-cat-estudio); }
+  &--productividad { background: var(--color-cat-productividad); }
+  &--bienestar { background: var(--color-cat-bienestar); }
+}
+
+.quest-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.quest-card__name {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.quest-card__meta {
+  display: flex;
+  gap: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.quest-card__xp {
+  color: var(--color-xp);
+}
+
+.quest-card__status {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+
+  &--done { color: var(--color-streak); }
+  &--pending { color: var(--color-text-muted); }
+}
