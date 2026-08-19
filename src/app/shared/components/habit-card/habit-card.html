@@ -20,4 +20,25 @@
   } @else {
     <span class="quest-card__status quest-card__status--pending">⬜ Pendiente</span>
   }
+
+  @if (showActions()) {
+    <div class="quest-card__actions">
+      <button
+        type="button"
+        class="quest-card__icon-button"
+        (click)="onEdit()"
+        aria-label="Editar hábito"
+      >
+        ✏️
+      </button>
+      <button
+        type="button"
+        class="quest-card__icon-button quest-card__icon-button--danger"
+        (click)="onRemove()"
+        aria-label="Eliminar hábito"
+      >
+        🗑️
+      </button>
+    </div>
+  }
 </li>
