@@ -25,3 +25,9 @@
   margin: 0;
   padding: 0;
 }
+
+.habit-form__button--danger {
+  background: var(--color-danger);
+  color: white;
+  border: none;
+}

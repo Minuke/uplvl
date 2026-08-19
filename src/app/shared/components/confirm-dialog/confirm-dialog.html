@@ -1,0 +1,14 @@
+<div class="confirm-dialog__backdrop" (click)="onCancel()">
+  <div class="confirm-dialog__panel" (click)="$event.stopPropagation()">
+    <h2 class="confirm-dialog__title">{{ title() }}</h2>
+    <p class="confirm-dialog__message">{{ message() }}</p>
+    <div class="confirm-dialog__actions">
+      <button type="button" class="habit-form__button habit-form__button--ghost" (click)="onCancel()">
+        Cancelar
+      </button>
+      <button type="button" class="habit-form__button habit-form__button--danger" (click)="onConfirm()">
+        Eliminar
+      </button>
+    </div>
+  </div>
+</div>
