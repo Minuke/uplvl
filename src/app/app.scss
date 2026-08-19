@@ -1,0 +1,27 @@
+.app-nav {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.app-nav__link {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  &:hover {
+    background: var(--color-surface-alt);
+  }
+}
+
+.app-nav__link--active {
+  color: var(--color-xp);
+  background: var(--color-surface);
+}

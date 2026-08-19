@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+<nav class="app-nav">
+  <a class="app-nav__link" routerLink="/dashboard" routerLinkActive="app-nav__link--active">
+    Dashboard
+  </a>
+  <a class="app-nav__link" routerLink="/habits" routerLinkActive="app-nav__link--active">
+    Hábitos
+  </a>
+</nav>
+
+<main class="app-main">
+  <router-outlet></router-outlet>
+</main>
