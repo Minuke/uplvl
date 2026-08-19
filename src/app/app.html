@@ -1,10 +1,17 @@
 <nav class="app-nav">
-  <a class="app-nav__link" routerLink="/dashboard" routerLinkActive="app-nav__link--active">
-    Dashboard
-  </a>
-  <a class="app-nav__link" routerLink="/habits" routerLinkActive="app-nav__link--active">
-    Hábitos
-  </a>
+  @if (authStore.isAuthenticated()) {
+    <a class="app-nav__link" routerLink="/dashboard" routerLinkActive="app-nav__link--active">
+      Dashboard
+    </a>
+    <a class="app-nav__link" routerLink="/habits" routerLinkActive="app-nav__link--active">
+      Hábitos
+    </a>
+
+    <span class="app-nav__spacer"></span>
+
+    <span class="app-nav__user">{{ authStore.currentUser()?.name }}</span>
+    <button type="button" class="btn btn--ghost" (click)="onLogout()">Salir</button>
+  }
 </nav>
 
 <main class="app-main">
