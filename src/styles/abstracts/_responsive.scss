@@ -1,0 +1,9 @@
+$breakpoint-md: 768px;
+
+// Mixin "mobile-first": el contenido de @content solo se aplica
+// a partir de $breakpoint-md hacia arriba, nunca hacia abajo.
+@mixin from-md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}

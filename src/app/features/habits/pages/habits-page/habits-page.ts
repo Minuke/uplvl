@@ -5,10 +5,11 @@ import { HabitsStore } from '@core/services/habits-store';
 import { HabitForm } from '@features/habits/components/habit-form/habit-form';
 import { ConfirmDialog } from '@shared/components/confirm-dialog/confirm-dialog';
 import { HabitCard } from '@shared/components/habit-card/habit-card';
+import { SkeletonList } from '@shared/components/skeleton-list/skeleton-list';
 
 @Component({
   selector: 'app-habits-page',
-  imports: [HabitCard, HabitForm, ConfirmDialog],
+  imports: [HabitCard, HabitForm, ConfirmDialog, SkeletonList],
   templateUrl: './habits-page.html',
   styleUrl: './habits-page.scss',
 })

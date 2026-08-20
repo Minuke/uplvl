@@ -1,13 +1,14 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { HabitsStore } from '@core/services/habits-store';
 import { HabitCard } from '@shared/components/habit-card/habit-card';
+import { SkeletonList } from '@shared/components/skeleton-list/skeleton-list';
 
 // Debe coincidir EXACTAMENTE con la duración del transition en xp-bar__fill (SCSS)
 const BAR_TRANSITION_MS = 400;
 
 @Component({
   selector: 'app-dashboard-page',
-  imports: [HabitCard],
+  imports: [HabitCard, SkeletonList],
   templateUrl: './dashboard-page.html',
   styleUrl: './dashboard-page.scss',
 })

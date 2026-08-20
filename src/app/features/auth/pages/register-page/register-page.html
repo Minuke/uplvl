@@ -32,8 +32,8 @@
       }
 
       <div class="form-actions">
-        <button type="submit" class="btn btn--primary" [disabled]="registerForm().invalid()">
-          Crear cuenta
+        <button type="submit" class="btn btn--primary" [disabled]="registerForm().invalid() || isSubmitting()">
+          {{ isSubmitting() ? 'Creando cuenta...' : 'Crear cuenta' }}
         </button>
       </div>
     </form>

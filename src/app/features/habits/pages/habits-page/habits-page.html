@@ -4,7 +4,9 @@
       <button type="button" class="btn btn--primary" (click)="openCreateForm()">+ Nuevo hábito</button>
   </header>
 
-  @if (habitsStore.habits().length === 0) {
+  @if (habitsStore.isLoading()) {
+    <app-skeleton-list [count]="3" />
+  } @else if (habitsStore.habits().length === 0) {
     <p class="habits-page__empty">Aún no tienes hábitos. Crea el primero para empezar a ganar XP.</p>
   } @else {
     <ul class="quest-list">

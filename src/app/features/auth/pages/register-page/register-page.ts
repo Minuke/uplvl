@@ -17,6 +17,7 @@ export class RegisterPage {
   private readonly router = inject(Router);
 
   protected readonly registerError = signal<string | null>(null);
+  protected readonly isSubmitting = signal(false);
   protected readonly formModel = signal<RegisterData>({ ...EMPTY_REGISTER_VALUE });
 
   protected readonly registerForm = form(this.formModel, (schema) => {
@@ -31,6 +32,12 @@ export class RegisterPage {
 
   protected onSubmit(): void {
     submit(this.registerForm, async () => {
+      this.isSubmitting.set(true);
+
+      // Simula la latencia de una petición real; en la Fase B, aquí iría el await
+      // a la llamada HTTP real, en el mismo sitio exacto.
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
       const success = this.authStore.register(this.formModel());
 
       if (success) {
@@ -38,6 +45,7 @@ export class RegisterPage {
         this.router.navigateByUrl('/dashboard');
       } else {
         this.registerError.set('Ya existe una cuenta con este email.');
+        this.isSubmitting.set(false);
       }
     });
   }
