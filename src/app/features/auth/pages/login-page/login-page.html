@@ -1,36 +1,3 @@
 <section class="panel-page">
-  <div class="panel-card">
-    <h1 class="panel-card__title">Entrar en UpLvl</h1>
-    <p class="panel-card__hint">Usuario demo: demo&#64;uplvl.app / demo1234</p>
-
-    <form (submit)="onSubmit(); $event.preventDefault()" class="form-stack">
-      <div class="form-field">
-        <label class="form-label" for="email">Email</label>
-        <input id="email" type="email" class="form-input" [formField]="loginForm.email" />
-        @if (loginForm.email().touched() && loginForm.email().errors().length) {
-          <span class="form-error">{{ loginForm.email().errors()[0].message }}</span>
-        }
-      </div>
-
-      <div class="form-field">
-        <label class="form-label" for="password">Contraseña</label>
-        <input id="password" type="password" class="form-input" [formField]="loginForm.password" />
-        @if (loginForm.password().touched() && loginForm.password().errors().length) {
-          <span class="form-error">{{ loginForm.password().errors()[0].message }}</span>
-        }
-      </div>
-
-      @if (loginError()) {
-        <p class="panel-card__error">{{ loginError() }}</p>
-      }
-
-      <div class="form-actions">
-        <button type="submit" class="btn btn--primary" [disabled]="loginForm().invalid() || isSubmitting()">
-          {{ isSubmitting() ? 'Entrando...' : 'Entrar' }}
-        </button>
-      </div>
-    </form>
-
-    <p class="panel-card__switch">¿No tienes cuenta? <a routerLink="/register">Regístrate</a></p>
-  </div>
+  <app-login-form-container />
 </section>

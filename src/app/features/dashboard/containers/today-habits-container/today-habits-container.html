@@ -1,0 +1,13 @@
+<h2 class="today-habits__title">Hábitos de hoy</h2>
+
+@if (habitsStore.isLoading()) {
+  <app-skeleton-list [count]="2" />
+} @else if (habitsStore.habitsToday().length === 0) {
+  <p class="empty-message">Aún no tienes hábitos para hoy.</p>
+} @else {
+  <ul class="quest-list">
+    @for (habit of habitsStore.habitsToday(); track habit.id) {
+      <app-habit-card [habit]="habit" (toggle)="habitsStore.toggleHabit($event)" />
+    }
+  </ul>
+}

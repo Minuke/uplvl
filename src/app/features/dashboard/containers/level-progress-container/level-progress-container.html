@@ -1,0 +1,32 @@
+@if (habitsStore.isLoading()) {
+  <div class="level-progress__skeleton-header">
+    <div class="skeleton level-progress__skeleton-badge"></div>
+    <div class="skeleton level-progress__skeleton-line"></div>
+  </div>
+} @else {
+  @let xpState = habitsStore.xpState();
+
+  <header class="level-progress__header">
+    <div class="level-badge" [class.level-badge--level-up]="justLeveledUp()">
+      <span class="level-badge__value">{{ xpState.level }}</span>
+    </div>
+    <div class="level-progress__identity">
+      <p class="level-progress__title">Tu progreso</p>
+      <span class="streak-chip">🔥 {{ habitsStore.streakGlobal() }} días de racha</span>
+    </div>
+  </header>
+
+  <div class="xp-bar">
+    <div class="xp-bar__labels">
+      <span>{{ xpState.currentXp }} XP</span>
+      <span>{{ xpState.xpForNextLevel }} XP</span>
+    </div>
+    <div class="xp-bar__track">
+      <div
+        class="xp-bar__fill"
+        [class.xp-bar__fill--no-transition]="skipTransition()"
+        [style.width.%]="displayedProgress()"
+      ></div>
+    </div>
+  </div>
+}

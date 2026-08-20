@@ -1,50 +1,8 @@
-@let xpState = habitsStore.xpState();
-
-<section class="dashboard">
-  @if (habitsStore.isLoading()) {
-    <div class="dashboard__skeleton-header">
-      <div class="skeleton dashboard__skeleton-badge"></div>
-      <div class="skeleton dashboard__skeleton-line"></div>
-    </div>
-  } @else {
-    <header class="dashboard__header">
-      <div class="level-badge" [class.level-badge--level-up]="justLeveledUp()">
-        <span class="level-badge__value">{{ xpState.level }}</span>
-      </div>
-      <div class="dashboard__identity">
-        <p class="dashboard__title">Tu progreso</p>
-        <span class="streak-chip">🔥 {{ habitsStore.streakGlobal() }} días de racha</span>
-      </div>
-    </header>
-
-    <div class="xp-bar">
-      <div class="xp-bar__labels">
-        <span>{{ xpState.currentXp }} XP</span>
-        <span>{{ xpState.xpForNextLevel }} XP</span>
-      </div>
-      <div class="xp-bar__track">
-        <div
-          class="xp-bar__fill"
-          [class.xp-bar__fill--no-transition]="skipTransition()"
-          [style.width.%]="displayedProgress()"
-        ></div>
-      </div>
-    </div>
-  }
-
-  <div class="dashboard__today">
-    <h2 class="dashboard__section-title">Hábitos de hoy</h2>
-
-    @if (habitsStore.isLoading()) {
-      <app-skeleton-list [count]="2" />
-    } @else if (habitsStore.habitsToday().length === 0) {
-      <p class="dashboard__empty">Aún no tienes hábitos para hoy.</p>
-    } @else {
-      <ul class="quest-list">
-        @for (habit of habitsStore.habitsToday(); track habit.id) {
-          <app-habit-card [habit]="habit" (toggle)="habitsStore.toggleHabit($event)" />
-        }
-      </ul>
-    }
+<section class="dashboard-page">
+  <div class="dashboard-page__header-area">
+    <app-level-progress-container />
+  </div>
+  <div class="dashboard-page__today-area">
+    <app-today-habits-container />
   </div>
 </section>
