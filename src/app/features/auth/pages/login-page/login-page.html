@@ -1,7 +1,7 @@
-<section class="auth-page">
-  <div class="auth-card">
-    <h1 class="auth-card__title">Entrar en UpLvl</h1>
-    <p class="auth-card__hint">Usuario demo: demo&#64;uplvl.app / demo1234</p>
+<section class="panel-page">
+  <div class="panel-card">
+    <h1 class="panel-card__title">Entrar en UpLvl</h1>
+    <p class="panel-card__hint">Usuario demo: demo&#64;uplvl.app / demo1234</p>
 
     <form (submit)="onSubmit(); $event.preventDefault()" class="form-stack">
       <div class="form-field">
@@ -21,7 +21,7 @@
       </div>
 
       @if (loginError()) {
-        <p class="auth-card__server-error">{{ loginError() }}</p>
+        <p class="panel-card__error">{{ loginError() }}</p>
       }
 
       <div class="form-actions">
@@ -31,6 +31,6 @@
       </div>
     </form>
 
-    <p class="auth-card__switch">¿No tienes cuenta? <a routerLink="/register">Regístrate</a></p>
+    <p class="panel-card__switch">¿No tienes cuenta? <a routerLink="/register">Regístrate</a></p>
   </div>
 </section>
