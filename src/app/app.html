@@ -1,19 +1,35 @@
 <nav class="app-nav">
   @if (authStore.isAuthenticated()) {
-    <a class="app-nav__link" routerLink="/dashboard" routerLinkActive="app-nav__link--active">
+  <button type="button" class="app-nav__toggle" (click)="toggleMenu()" [attr.aria-expanded]="isMenuOpen()"
+    aria-label="Abrir menú de navegación">
+    <span class="app-nav__toggle-bar"></span>
+    <span class="app-nav__toggle-bar"></span>
+    <span class="app-nav__toggle-bar"></span>
+  </button>
+
+  <div class="app-nav__links" [class.app-nav__links--open]="isMenuOpen()">
+
+    <a class="app-nav__link" routerLink="/dashboard" routerLinkActive="app-nav__link--active" (click)="closeMenu()">
       Dashboard
     </a>
-    <a class="app-nav__link" routerLink="/habits" routerLinkActive="app-nav__link--active">
+
+    <a class="app-nav__link" routerLink="/habits" routerLinkActive="app-nav__link--active" (click)="closeMenu()">
       Hábitos
     </a>
 
     <span class="app-nav__spacer"></span>
 
     <span class="app-nav__user">{{ authStore.currentUser()?.name }}</span>
-    <button type="button" class="btn btn--ghost" (click)="onLogout()">Salir</button>
+    <button type="button" class="btn btn--ghost" (click)="requestLogout()">Salir</button>
+  </div>
   }
 </nav>
 
 <main class="app-main">
   <router-outlet></router-outlet>
 </main>
+
+@if (isLogoutConfirmOpen()) {
+<app-confirm-dialog title="Cerrar sesión" message="¿Seguro que quieres salir de tu cuenta?" (confirm)="confirmLogout()"
+  (cancel)="cancelLogout()" />
+}
