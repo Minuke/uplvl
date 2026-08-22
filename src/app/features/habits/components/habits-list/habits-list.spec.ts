@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginFormContainer } from './login-form-container';
+import { HabitsList } from './habits-list';
 
-describe('LoginFormContainer', () => {
-  let component: LoginFormContainer;
-  let fixture: ComponentFixture<LoginFormContainer>;
+describe('HabitsListContainer', () => {
+  let component: HabitsList;
+  let fixture: ComponentFixture<HabitsList>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LoginFormContainer],
+      imports: [HabitsList],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(LoginFormContainer);
+    fixture = TestBed.createComponent(HabitsList);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

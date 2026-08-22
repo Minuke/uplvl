@@ -7,12 +7,12 @@ import { LoginCredentials } from '@core/models/auth-credentials.model';
 const EMPTY_LOGIN_VALUE: LoginCredentials = { email: '', password: '' };
 
 @Component({
-  selector: 'app-login-form-container',
+  selector: 'app-login-form',
   imports: [FormField, RouterLink],
-  templateUrl: './login-form-container.html',
-  styleUrl: './login-form-container.scss',
+  templateUrl: './login-form.html',
+  styleUrl: './login-form.scss',
 })
-export class LoginFormContainer {
+export class LoginForm {
   private readonly authStore = inject(AuthStore);
   private readonly router = inject(Router);
 

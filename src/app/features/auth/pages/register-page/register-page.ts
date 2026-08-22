@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RegisterFormContainer } from '@features/auth/containers/register-form-container/register-form-container';
+import { RegisterForm } from '@features/auth/components/register-form/register-form';
 
 @Component({
   selector: 'app-register-page',
-  imports: [RegisterFormContainer],
+  imports: [RegisterForm],
   templateUrl: './register-page.html',
   styleUrl: './register-page.scss',
 })

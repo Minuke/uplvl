@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegisterFormContainer } from './register-form-container';
+import { LevelProgress } from './level-progress';
 
-describe('RegisterFormContainer', () => {
-  let component: RegisterFormContainer;
-  let fixture: ComponentFixture<RegisterFormContainer>;
+describe('LevelProgressContainer', () => {
+  let component: LevelProgress;
+  let fixture: ComponentFixture<LevelProgress>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RegisterFormContainer],
+      imports: [LevelProgress],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RegisterFormContainer);
+    fixture = TestBed.createComponent(LevelProgress);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

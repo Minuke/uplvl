@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TodayHabitsContainer } from './today-habits-container';
+import { RegisterForm } from './register-form';
 
-describe('TodayHabitsContainer', () => {
-  let component: TodayHabitsContainer;
-  let fixture: ComponentFixture<TodayHabitsContainer>;
+describe('RegisterForm', () => {
+  let component: RegisterForm;
+  let fixture: ComponentFixture<RegisterForm>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TodayHabitsContainer],
+      imports: [RegisterForm],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TodayHabitsContainer);
+    fixture = TestBed.createComponent(RegisterForm);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

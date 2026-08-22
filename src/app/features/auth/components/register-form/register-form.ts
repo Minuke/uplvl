@@ -7,12 +7,12 @@ import { RegisterData } from '@core/models/auth-credentials.model';
 const EMPTY_REGISTER_VALUE: RegisterData = { name: '', email: '', password: '' };
 
 @Component({
-  selector: 'app-register-form-container',
+  selector: 'app-register-form',
   imports: [FormField, RouterLink],
-  templateUrl: './register-form-container.html',
-  styleUrl: './register-form-container.scss',
+  templateUrl: './register-form.html',
+  styleUrl: './register-form.scss',
 })
-export class RegisterFormContainer {
+export class RegisterForm {
   private readonly authStore = inject(AuthStore);
   private readonly router = inject(Router);
 

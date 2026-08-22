@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LevelProgressContainer } from './level-progress-container';
+import { TodayHabits } from './today-habits';
 
-describe('LevelProgressContainer', () => {
-  let component: LevelProgressContainer;
-  let fixture: ComponentFixture<LevelProgressContainer>;
+describe('TodayHabitsContainer', () => {
+  let component: TodayHabits;
+  let fixture: ComponentFixture<TodayHabits>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LevelProgressContainer],
+      imports: [TodayHabits],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(LevelProgressContainer);
+    fixture = TestBed.createComponent(TodayHabits);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

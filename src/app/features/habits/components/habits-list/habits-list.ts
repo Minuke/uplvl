@@ -8,12 +8,12 @@ import { HabitCard } from '@shared/components/habit-card/habit-card';
 import { SkeletonList } from '@shared/components/skeleton-list/skeleton-list';
 
 @Component({
-  selector: 'app-habits-list-container',
+  selector: 'app-habits-list',
   imports: [HabitCard, HabitForm, ConfirmDialog, SkeletonList],
-  templateUrl: './habits-list-container.html',
-  styleUrl: './habits-list-container.scss',
+  templateUrl: './habits-list.html',
+  styleUrl: './habits-list.scss',
 })
-export class HabitsListContainer {
+export class HabitsList {
   protected readonly habitsStore = inject(HabitsStore);
 
   protected readonly isFormOpen = signal(false);

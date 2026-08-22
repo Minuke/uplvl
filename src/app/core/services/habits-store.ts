@@ -6,13 +6,6 @@ import { calculateLevelProgressPercentage, calculateLevelStatus } from '@core/ut
 @Service()
 export class HabitsStore {
 
-  constructor() {
-    // Simula la latencia de una petición HTTP real. En la Fase B, esto se
-    // sustituirá por la llamada real al backend; el resto de la app no
-    // tendrá que cambiar nada, porque ya consume `isLoading()` como signal.
-    setTimeout(() => this._isLoading.set(false), 600);
-  }
-
   // --- ESTADO PRIVADO (la fuente de la verdad, nadie fuera puede escribirla directamente) ---
   private readonly _habits = signal<Habit[]>([
     {
@@ -53,6 +46,14 @@ export class HabitsStore {
   readonly habits = this._habits.asReadonly();
   readonly streakGlobal = this._streakGlobal.asReadonly();
   readonly isLoading = this._isLoading.asReadonly();
+
+  // CONSTRUCTOR
+  constructor() {
+    // Simula la latencia de una petición HTTP real. En la Fase B, esto se
+    // sustituirá por la llamada real al backend; el resto de la app no
+    // tendrá que cambiar nada, porque ya consume `isLoading()` como signal.
+    setTimeout(() => this._isLoading.set(false), 600);
+  }
 
   // --- VALORES DERIVADOS (computed) ---
   readonly xpState = computed(() => calculateLevelStatus(this._xpTotal()));

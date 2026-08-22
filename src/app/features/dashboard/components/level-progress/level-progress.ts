@@ -4,12 +4,12 @@ import { HabitsStore } from '@core/services/habits-store';
 const BAR_TRANSITION_MS = 400;
 
 @Component({
-  selector: 'app-level-progress-container',
+  selector: 'app-level-progress',
   imports: [],
-  templateUrl: './level-progress-container.html',
-  styleUrl: './level-progress-container.scss',
+  templateUrl: './level-progress.html',
+  styleUrl: './level-progress.scss',
 })
-export class LevelProgressContainer {
+export class LevelProgress {
   protected readonly habitsStore = inject(HabitsStore);
 
   protected readonly justLeveledUp = signal(false);

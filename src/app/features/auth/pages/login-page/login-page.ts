@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { LoginFormContainer } from '@features/auth/containers/login-form-container/login-form-container';
+import { LoginForm } from '@features/auth/components/login-form/login-form';
 
 @Component({
   selector: 'app-login-page',
-  imports: [LoginFormContainer],
+  imports: [LoginForm],
   templateUrl: './login-page.html',
   styleUrl: './login-page.scss',
 })

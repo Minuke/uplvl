@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { HabitsListContainer } from '@features/habits/containers/habits-list-container/habits-list-container';
+import { HabitsList } from '@features/habits/components/habits-list/habits-list';
 
 @Component({
   selector: 'app-habits-page',
-  imports: [HabitsListContainer],
+  imports: [HabitsList],
   templateUrl: './habits-page.html',
   styleUrl: './habits-page.scss',
 })
