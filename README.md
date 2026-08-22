@@ -7,6 +7,7 @@ Aplicación de seguimiento de hábitos gamificada: cada hábito completado suma 
 - **Angular 22** — standalone components (sin NgModules), zoneless por defecto, Signal Forms.
 - **SCSS** con arquitectura 7+1.
 - **TypeScript** en modo estricto.
+- **Biome** — linting y formateo (sustituye a ESLint + Prettier), con Husky + lint-staged en pre-commit.
 - **Vitest** como test runner.
 
 ## Puesta en marcha
@@ -87,3 +88,7 @@ Breakpoints mobile-first, con los mismos valores que Bootstrap (sin depender de 
 | `npm run build` | Build de producción |
 | `npm run watch` | Build en modo watch (desarrollo) |
 | `npm test` | Ejecuta los tests con Vitest |
+| `npm run lint` | Lint con Biome (`--write`, aplica fixes seguros) |
+| `npm run format` | Formatea con Biome |
+| `npm run check` | Lint + formato + organización de imports, todo junto |
+| `npm run check:ci` | Igual que `check`, en modo verificación (sin escribir) — usado en CI |
