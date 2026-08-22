@@ -1,4 +1,4 @@
-import { HabitCategory } from '@core/models/habit.model';
+import type { HabitCategory } from '@core/models/habit.model';
 
 export interface HabitFormValue {
   name: string;

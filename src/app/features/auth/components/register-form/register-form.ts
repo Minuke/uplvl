@@ -1,8 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
+import { email, FormField, form, minLength, required, submit } from '@angular/forms/signals';
 import { Router, RouterLink } from '@angular/router';
-import { email, form, FormField, minLength, required, submit } from '@angular/forms/signals';
+import type { RegisterData } from '@core/models/auth-credentials.model';
 import { AuthStore } from '@core/services/auth-store';
-import { RegisterData } from '@core/models/auth-credentials.model';
 
 const EMPTY_REGISTER_VALUE: RegisterData = { name: '', email: '', password: '' };
 

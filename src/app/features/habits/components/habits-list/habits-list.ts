@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
-import { Habit } from '@core/models/habit.model';
-import { HabitFormValue } from '@core/models/habit-form-value.model';
+import type { Habit } from '@core/models/habit.model';
+import type { HabitFormValue } from '@core/models/habit-form-value.model';
 import { HabitsStore } from '@core/services/habits-store';
 import { HabitForm } from '@features/habits/components/habit-form/habit-form';
 import { ConfirmDialog } from '@shared/components/confirm-dialog/confirm-dialog';

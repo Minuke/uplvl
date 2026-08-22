@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { Habit } from '@core/models/habit.model';
+import type { Habit } from '@core/models/habit.model';
 
 @Component({
   selector: 'app-habit-card',

@@ -1,8 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
+import { email, FormField, form, required, submit } from '@angular/forms/signals';
 import { Router, RouterLink } from '@angular/router';
-import { email, form, FormField, required, submit } from '@angular/forms/signals';
+import type { LoginCredentials } from '@core/models/auth-credentials.model';
 import { AuthStore } from '@core/services/auth-store';
-import { LoginCredentials } from '@core/models/auth-credentials.model';
 
 const EMPTY_LOGIN_VALUE: LoginCredentials = { email: '', password: '' };
 

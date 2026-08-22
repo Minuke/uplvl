@@ -1,4 +1,4 @@
-import { XpState } from "@core/models/xp-state.model";
+import type { XpState } from '@core/models/xp-state.model';
 
 /**
  * Calcula cuánto XP total hace falta para ALCANZAR un nivel determinado.

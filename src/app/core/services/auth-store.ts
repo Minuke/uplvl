@@ -1,6 +1,6 @@
 import { computed, Service, signal } from '@angular/core';
-import { LoginCredentials, RegisterData } from '@core/models/auth-credentials.model';
-import { User } from '@core/models/user.model';
+import type { LoginCredentials, RegisterData } from '@core/models/auth-credentials.model';
+import type { User } from '@core/models/user.model';
 
 type RegisteredUser = User & { password: string };
 
@@ -23,7 +23,7 @@ export class AuthStore {
    */
   login(credentials: LoginCredentials): boolean {
     const match = this._registeredUsers().find(
-      (user) => user.email === credentials.email && user.password === credentials.password
+      (user) => user.email === credentials.email && user.password === credentials.password,
     );
 
     if (!match) {

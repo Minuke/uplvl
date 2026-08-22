@@ -1,11 +1,10 @@
 import { computed, Service, signal } from '@angular/core';
-import { HabitFormValue } from '@core/models/habit-form-value.model';
-import { Habit } from '@core/models/habit.model';
+import type { Habit } from '@core/models/habit.model';
+import type { HabitFormValue } from '@core/models/habit-form-value.model';
 import { calculateLevelProgressPercentage, calculateLevelStatus } from '@core/utils/level.util';
 
 @Service()
 export class HabitsStore {
-
   // --- ESTADO PRIVADO (la fuente de la verdad, nadie fuera puede escribirla directamente) ---
   private readonly _habits = signal<Habit[]>([
     {
@@ -38,7 +37,6 @@ export class HabitsStore {
   private readonly _streakGlobal = signal<number>(3);
   private readonly _isLoading = signal(true);
 
-
   // --- ESTADO PÚBLICO DE SOLO LECTURA ---
   // .asReadonly() da a los componentes una versión de la signal que se puede LEER
   // pero no tiene .set() ni .update(). Así obligamos a que cualquier cambio de estado
@@ -60,15 +58,13 @@ export class HabitsStore {
 
   readonly habitsToday = computed(() => this._habits());
 
-  readonly progressCurrentLevel = computed(() =>
-    calculateLevelProgressPercentage(this.xpState())
-  );
+  readonly progressCurrentLevel = computed(() => calculateLevelProgressPercentage(this.xpState()));
 
   /**
- * Alterna el estado "completado hoy" de un hábito.
- * Si se marca como hecho: suma su xpReward al total y sube su racha en 1.
- * Si se desmarca (deshacer): resta ese xpReward y baja la racha en 1 (sin bajar de 0).
- */
+   * Alterna el estado "completado hoy" de un hábito.
+   * Si se marca como hecho: suma su xpReward al total y sube su racha en 1.
+   * Si se desmarca (deshacer): resta ese xpReward y baja la racha en 1 (sin bajar de 0).
+   */
   toggleHabit(habitId: string): void {
     const targetHabit = this._habits().find((habit) => habit.id === habitId);
 
@@ -99,10 +95,10 @@ export class HabitsStore {
   }
 
   /**
-  * Crea un hábito nuevo a partir de los datos del formulario.
-  * El id lo genera el store (el usuario nunca lo escribe), y arranca
-  * siempre sin completar y sin racha.
-  */
+   * Crea un hábito nuevo a partir de los datos del formulario.
+   * El id lo genera el store (el usuario nunca lo escribe), y arranca
+   * siempre sin completar y sin racha.
+   */
   addHabit(formValue: HabitFormValue): void {
     const newHabit: Habit = {
       id: crypto.randomUUID(),
@@ -147,6 +143,4 @@ export class HabitsStore {
     const updatedHabits = this._habits().filter((habit) => habit.id !== habitId);
     this._habits.set(updatedHabits);
   }
-
-
 }

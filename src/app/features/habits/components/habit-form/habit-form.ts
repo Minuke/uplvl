@@ -1,7 +1,7 @@
 import { Component, effect, input, output, signal } from '@angular/core';
-import { form, FormField, maxLength, min, required, submit } from '@angular/forms/signals';
-import { Habit, HabitCategory } from '@core/models/habit.model';
-import { HabitFormValue } from '@core/models/habit-form-value.model';
+import { FormField, form, maxLength, min, required, submit } from '@angular/forms/signals';
+import type { Habit, HabitCategory } from '@core/models/habit.model';
+import type { HabitFormValue } from '@core/models/habit-form-value.model';
 
 const EMPTY_FORM_VALUE: HabitFormValue = {
   name: '',
