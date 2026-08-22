@@ -80,6 +80,23 @@ Cualquier clase que se repita en 2 o más componentes se extrae a `styles/compon
 
 Breakpoints mobile-first, con los mismos valores que Bootstrap (sin depender de la librería), en `styles/abstracts/_responsive.scss`.
 
+## Calidad de código
+
+- **Biome** — lint y formato (ver scripts `lint`/`format`/`check`), con Husky + lint-staged aplicándolo en cada commit.
+- **SonarQube** (local, vía Docker) — análisis estático más profundo (deuda técnica, cobertura, code smells).
+
+### Levantar SonarQube en local
+
+```bash
+docker compose -f docker-compose.sonar.yml up -d
+```
+
+Panel en `http://localhost:9000`. Copia `.env.example` a `.env` y añade tu token de SonarQube (`SONAR_TOKEN`), generado desde tu perfil de usuario en la propia UI de SonarQube.
+
+```bash
+npm run sonar
+```
+
 ## Scripts
 
 | Comando | Qué hace |
@@ -92,3 +109,4 @@ Breakpoints mobile-first, con los mismos valores que Bootstrap (sin depender de 
 | `npm run format` | Formatea con Biome |
 | `npm run check` | Lint + formato + organización de imports, todo junto |
 | `npm run check:ci` | Igual que `check`, en modo verificación (sin escribir) — usado en CI |
+| `npm run sonar` | Lanza el análisis estático contra la instancia local de SonarQube |
